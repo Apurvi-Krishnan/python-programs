@@ -1,0 +1,18 @@
+class Solution:
+    def winner(self, arr):
+        from collections import Counter
+        
+        freq = Counter(arr)
+        
+        max_votes = 0
+        candidate = ""
+        
+        for name in freq:
+            if freq[name] > max_votes:
+                max_votes = freq[name]
+                candidate = name
+            elif freq[name] == max_votes:
+                if name < candidate:
+                    candidate = name
+        
+        return [candidate, str(max_votes)]
